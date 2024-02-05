@@ -72,3 +72,31 @@ Then use `TodoItem` 3 times in `App`
   <TodoItem />
 </div>
 ```
+
+## Props
+
+Déclare one prop called `todo` in `TodoItem`.
+
+```
+<TodoItem todo={} >
+```
+
+This prop is an object containing 3 keys/properties :
+- `id` with type `number`
+- `title` with type `string`
+- `completed` with type `boolean`
+
+In the `App` component pass a different todo object to `<TodoItem />` for instance :
+
+```
+{ id: Math.random(), title: 'ABC', completed: false }
+```
+
+Then modify the code of `TodoItem` component :
+- pass the `id` key to `data-todo-id`
+- assign `completed` to the `checked` property of the checkbox
+- pass `title` as a prop of the `<TodoSpanValue />` component
+
+Then déclare a prop named `title` in `TodoSpanValue` and show it inside the `<span>` element
+
+Do the same in `TodoInputValue` which is not used yet.
