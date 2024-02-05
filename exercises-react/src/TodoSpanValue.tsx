@@ -1,7 +1,11 @@
-function TodoSpanValue() {
+type Props = Readonly<{
+  readonly title: string
+}>;
+
+function TodoSpanValue({ title }: Props) {
   return (
     <span className="TodoSpanValue">
-      Do something
+      {title}
     </span>
   );
 }

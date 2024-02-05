@@ -9,9 +9,9 @@ function App() {
         <button>+</button>
       </form>
       <div className="todos-container">
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        <TodoItem todo={{ id: Math.random(), title: 'ABC', completed: false }} />
+        <TodoItem todo={{ id: Math.random(), title: 'DEF', completed: true }} />
+        <TodoItem todo={{ id: Math.random(), title: 'XYZ', completed: false }} />
       </div>
     </div>
   );
