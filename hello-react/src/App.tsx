@@ -1,10 +1,19 @@
-import { useState } from 'react'
+import { useState, MouseEvent } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Clock from './Clock'
 
 function App() {
+  console.log('App renders');
   const [count, setCount] = useState(0)
+  const [names, setNames] = useState<string[]>([]);
+
+
+  function handleClick(event: MouseEvent<HTMLButtonElement>) {
+    setCount((count) => count + event.clientY)
+    setNames([...names, 'Romain']);
+  }
 
   return (
     <>
@@ -18,7 +27,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <Clock />
+        <button onClick={handleClick}>
           count is {count}
         </button>
         <p>

@@ -100,3 +100,51 @@ Then modify the code of `TodoItem` component :
 Then déclare a prop named `title` in `TodoSpanValue` and show it inside the `<span>` element
 
 Do the same in `TodoInputValue` which is not used yet.
+
+## Conditional JSX and Lists
+
+Add a prop `isEditing` in the `TodoItem` component, the prop should optionnal (using ? in TypeScript), of type boolean and default to `false`.
+
+In the JSX of `TodoItem` if `isEditing` equals `false`, show the `TodoSpanValue` component, if `isEditing` equals `true` show the `TodoInputValue` component instead.
+
+Test with `App` that components show an input if we pass `isEditing={true}` or `isEditing={false}` to `TodoItem`
+
+In `App` add to variables at the beginning of the component :
+
+```
+const todos = [
+  { id: 123, title: 'ABC', completed: false },
+  { id: 456, title: 'DEF', completed: true },
+  { id: 987, title: 'XYZ', completed: false },
+];
+const editingId = 456;
+```
+
+Then modify the JSX of `App` so it shows todos in sync with thoses variables
+(the second one should be in editing mode)
+
+## Event and State
+
+Update `App` so that `todos` is using the state (with `useState`)
+
+Add a new state `newTodo` (with default valeur `'ABC'`) and pass `newTodo` to the `value` property of the input text : `<input type="text" className="todos-new-input" />`
+
+Then listen with `onChange` the new values typed into the field and update `newTodo` (with `setNewTodo`) the value using `event.target.value` (see slide 82)
+
+The listen to the submit event of the form (`onSubmit`), the call `event.preventDefault()` to disable the default behavior of the browser.
+
+Then use `setTodos` in the `handleSubmit` (or the name of the callback associated with onSubmit) to add a new element in the array :
+
+```
+setTodos(
+  [
+    ...todos,
+    { /*  a new object with 3 keys : id (Math.random()), title (value from the field) et completed (false)  */ }
+  ]
+)
+```
+
+Listen to the click of this checkbox :
+`<input type="checkbox" className="todos-toggle-checked" />`
+
+Check or uncheck all the checkboxes in `TodoItem`.
