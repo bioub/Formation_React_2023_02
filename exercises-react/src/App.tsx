@@ -8,7 +8,7 @@ function App() {
     { id: 987, title: 'XYZ', completed: false },
   ]);
   const [newTodoTitle, setNewTodoTitle] = useState('GHI');
-  const [editingId, setEditingId] = useState(987);
+  const [editingId/*, setEditingId*/] = useState(987);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

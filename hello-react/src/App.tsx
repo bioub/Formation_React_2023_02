@@ -3,16 +3,16 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Clock from './Clock'
+import Select from './Select'
 
 function App() {
   console.log('App renders');
   const [count, setCount] = useState(0)
-  const [names, setNames] = useState<string[]>([]);
+  const [color, setColor] = useState('Green');
 
 
   function handleClick(event: MouseEvent<HTMLButtonElement>) {
     setCount((count) => count + event.clientY)
-    setNames([...names, 'Romain']);
   }
 
   return (
@@ -28,6 +28,7 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <Clock />
+        <Select items={['Red', 'Blue', 'Green']} value={color} onValueChange={(newItem) => setColor(newItem)}  />
         <button onClick={handleClick}>
           count is {count}
         </button>

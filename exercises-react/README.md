@@ -148,3 +148,29 @@ Listen to the click of this checkbox :
 `<input type="checkbox" className="todos-toggle-checked" />`
 
 Check or uncheck all the checkboxes in `TodoItem`.
+
+## Lift value up from a child
+
+### Exercise 1
+
+Listen to the click of `<button className="todosDeleteBtn">-</button>` in the `TodoItem` component (the function does nothing)
+
+Since we would like to update the `todos` state in `App` when the
+click occurs, we have to lift the value up.
+
+To achieve that, declare a new props in `TodoItem` called `onRemove`
+
+This prop should be a function, that will take a todo as a parameter and returns void.
+
+Call that function when the click occurs on `<button className="todosDeleteBtn">-</button>`
+
+Then in `App`, declare a function called `handleRemove` that will receive the todo to remove from the child `TodoItem`, and associate this function to the `onRemove` prop of `TodoItem`. In that function you should call `setTodos` with a new array, without the todo received as a parameter.
+
+### Exercise 2
+
+Then we would like to listen to the double click event from the `TodoSpanValue` component, when the double click occurs we would like to update the `editingId` state in `App`
+
+The difficulty here is that `App` is not the parent of `TodoSpanValue` (because there is `TodoItem` between)
+
+So to make this work, you will have to pass a function from `App` to `TodoItem` and then pass the function from `TodoItem` to `TodoSpanValue` (so you will be able to call it in the double click handler).
+
