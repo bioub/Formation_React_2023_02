@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import './Clock.scss'
 
 function Clock() {
   // console.log('Clock renders');

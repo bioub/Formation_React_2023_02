@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import styles from './Select.module.css';
 
 export interface SelectProps {
   items: string[];
@@ -29,10 +30,10 @@ function Select({ items, value, onValueChange }: Readonly<SelectProps>) {
   }, []);
 
   return (
-    <div ref={hostRef}>
-      <div onClick={() => setMenuOpen(!menuOpen)}>{value}</div>
+    <div ref={hostRef} className="Select">
+      <div className={styles.selected} onClick={() => setMenuOpen(!menuOpen)}>{value}</div>
       {menuOpen && (
-        <div>
+        <div className={styles.menu} style={{height: 100}}>
           {items.map((item) => (
             <div key={item} onClick={() => handleItemClick(item)}>
               {item}
