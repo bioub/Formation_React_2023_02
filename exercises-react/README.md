@@ -174,3 +174,30 @@ The difficulty here is that `App` is not the parent of `TodoSpanValue` (because 
 
 So to make this work, you will have to pass a function from `App` to `TodoItem` and then pass the function from `TodoItem` to `TodoSpanValue` (so you will be able to call it in the double click handler).
 
+### Effects and Refs
+
+Copy paste this function in `App.tsx` :
+
+```
+async function fetchTodos(): Promise<Todo[]> {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const data = await res.json();
+  return data
+    .slice(0, 20);
+}
+```
+
+Call this in an effect in this `App` component, that should be called only once after the first render.
+
+To call fetchTodos :
+
+```
+fetchTodos().then((todosFromTheServer) => {
+
+});
+```
+
+Update the `todos` state with todos coming from the server.
+
+In `App` listen to the click of window (like in Select) and update the `editingId` state to value `0` (`0` should also be the default value at load)
+
